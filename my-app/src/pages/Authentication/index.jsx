@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import style from './index.module.scss';
+import useFetch from '../../hooks/useFetch';
 
 function Authentication() {
   console.log('render');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isSubmit, setIsSubmit] = useState(false);
-  const handleSubmit = () => {
-    setIsSubmit(true);
-    console.log('submit');
-  };
+  const [{ response, error, isLoading }, doFetch] = useFetch('/users/login');
 
-  useEffect(() => {
-    console.log('effect');
-    if (!isSubmit) {
-      return;
-    } // disabling the first request
-    console.log('AXIOS');
-    axios('https://conduit.productionready.io/api/users/login', {
+  const handleSubmit = () => {
+    doFetch({
       method: 'post',
       data: {
         user: {
@@ -26,14 +17,9 @@ function Authentication() {
           password: 'test123',
         },
       },
-    }).then((res) => {
-      console.log('res', res);
-      setIsSubmit(false);
-    }).catch((error) => {
-      console.log('error', error);
-      setIsSubmit(false);
     });
-  }, [isSubmit]);
+    console.log('submit');
+  };
 
   return (
     <div className={style.wrapper}>
@@ -63,7 +49,7 @@ function Authentication() {
             />
           </label>
 
-          <button type="button" onClick={handleSubmit} disabled={isSubmit}>login</button>
+          <button type="button" onClick={handleSubmit} disabled={isLoading}>login</button>
         </div>
       </div>
     </div>

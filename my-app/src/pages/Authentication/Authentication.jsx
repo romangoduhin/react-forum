@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import style from './Authentication.module.scss';
 import useFetch from '../../hooks/useFetch';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 function Authentication(props) {
   const isLogin = props.match.path === '/login';
@@ -15,6 +16,7 @@ function Authentication(props) {
   const [username, setUsername] = useState('');
   const [isSuccessfulSubmit, setIsSuccessfulSubmit] = useState(false);
   const [{ response, error, isLoading }, doFetch] = useFetch(apiUrl);
+  const [token, setToken] = useLocalStorage('token');
 
   const handleSubmit = () => {
     const user = isLogin ? { email, password } : { username, email, password };
@@ -31,7 +33,7 @@ function Authentication(props) {
       return;
     }
 
-    localStorage.setItem('token', response.user.token);
+    setToken(response.user.token);
     setIsSuccessfulSubmit(true);
   }, [response]);
 

@@ -17,6 +17,7 @@ export default (url) => {
     if (!isLoading) {
       return;
     }
+
     axios(baseUrl + url, options).then((res) => {
       setIsLoading(false);
       setResponse(res.data);

@@ -19,7 +19,10 @@ module.exports = {
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: false, optionalDependencies: false, peerDependencies: false }],
     'no-unused-vars': 'off',
     'no-shadow': 'off',
+    'react/prop-types': 0,
+    'react/destructuring-assignment': [0],
   },
 };

@@ -14,17 +14,13 @@ export default (url) => {
   };
 
   useEffect(() => {
-    console.log('effect');
     if (!isLoading) {
       return;
     }
-    console.log('AXIOS');
     axios(baseUrl + url, options).then((res) => {
-      console.log('res', res);
       setIsLoading(false);
       setResponse(res.data);
     }).catch((error) => {
-      console.log('error', error);
       setIsLoading(false);
       setError(error.response.data);
     });

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import style from './Authentication.module.scss';
 import useFetch from '../../hooks/useFetch';
 import useLocalStorage from '../../hooks/useLocalStorage';
+import { CurrentUserContext } from '../../contexts/currentUser';
 
 function Authentication(props) {
   const isLogin = props.match.path === '/login';
@@ -17,6 +18,9 @@ function Authentication(props) {
   const [isSuccessfulSubmit, setIsSuccessfulSubmit] = useState(false);
   const [{ response, error, isLoading }, doFetch] = useFetch(apiUrl);
   const [token, setToken] = useLocalStorage('token');
+  const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
+
+  console.log(currentUser);
 
   const handleSubmit = () => {
     const user = isLogin ? { email, password } : { username, email, password };
@@ -35,6 +39,12 @@ function Authentication(props) {
 
     setToken(response.user.token);
     setIsSuccessfulSubmit(true);
+    setCurrentUser((state) => ({
+      ...state,
+      isLoading: false,
+      isLogged: true,
+      currentUser: response.user,
+    }));
   }, [response]);
 
   if (isSuccessfulSubmit) {
@@ -45,7 +55,7 @@ function Authentication(props) {
       <div className={style.authBlock}>
         <h1>{pageTitle}</h1>
         <Link to={descriptionLink}>{descriptionText}</Link>
-        <div className={style.inputWrapper}>
+        <form className={style.inputWrapper}>
           {!isLogin && (
             <label htmlFor="username" className={style.label}>
               Username
@@ -91,7 +101,7 @@ function Authentication(props) {
           </label>
 
           <button type="button" onClick={handleSubmit} disabled={isLoading}>{pageTitle}</button>
-        </div>
+        </form>
       </div>
     </div>
   );

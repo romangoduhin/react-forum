@@ -5,6 +5,7 @@ import style from './Authentication.module.scss';
 import useFetch from '../../hooks/useFetch';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { CurrentUserContext } from '../../contexts/currentUser';
+import ErrorMessages from '../../components/ErrorMessages';
 
 function Authentication(props) {
   const isLogin = props.match.path === '/login';
@@ -19,8 +20,6 @@ function Authentication(props) {
   const [{ response, error, isLoading }, doFetch] = useFetch(apiUrl);
   const [token, setToken] = useLocalStorage('token');
   const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
-
-  console.log(currentUser);
 
   const handleSubmit = () => {
     const user = isLogin ? { email, password } : { username, email, password };
@@ -45,7 +44,7 @@ function Authentication(props) {
       isLogged: true,
       currentUser: response.user,
     }));
-  }, [response]);
+  }, [response, isSuccessfulSubmit, currentUser]);
 
   if (isSuccessfulSubmit) {
     return <Redirect to="/" />;
@@ -56,6 +55,7 @@ function Authentication(props) {
         <h1>{pageTitle}</h1>
         <Link to={descriptionLink}>{descriptionText}</Link>
         <form className={style.inputWrapper}>
+          {error && <ErrorMessages error={error.errors} />}
           {!isLogin && (
             <label htmlFor="username" className={style.label}>
               Username

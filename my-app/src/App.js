@@ -7,20 +7,22 @@ import GlobalFeed from './pages/GlobalFeed';
 import Article from './pages/Article';
 import Authentication from './pages/Authentication';
 import TopBar from './components/TopBar';
-import { CurrentUserProvider } from './contexts/currentUser';
+import { CurrentUserProvider } from './contexts/CurrentUserContext';
+import CurrentUserChecker from './components/CurrentUserChecker';
 
 function App() {
   return (
     <CurrentUserProvider>
-      <BrowserRouter>
-        <TopBar />
+      <CurrentUserChecker>
+        <BrowserRouter>
+          <TopBar />
 
-        <Route exact path="/" component={GlobalFeed} />
-        <Route path="/article/:articlePath" component={Article} />
-        <Route path="/login" component={Authentication} />
-        <Route path="/signup" component={Authentication} />
-
-      </BrowserRouter>
+          <Route exact path="/" component={GlobalFeed} />
+          <Route path="/article/:articlePath" component={Article} />
+          <Route path="/login" component={Authentication} />
+          <Route path="/signup" component={Authentication} />
+        </BrowserRouter>
+      </CurrentUserChecker>
     </CurrentUserProvider>
   );
 }

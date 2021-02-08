@@ -4,8 +4,8 @@ import { Redirect } from 'react-router';
 import style from './Authentication.module.scss';
 import useFetch from '../../hooks/useFetch';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import { CurrentUserContext } from '../../contexts/currentUser';
-import ErrorMessages from '../../components/ErrorMessages';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import ErrorMessages from './components/ErrorMessages';
 
 function Authentication(props) {
   const isLogin = props.match.path === '/login';
@@ -18,12 +18,12 @@ function Authentication(props) {
   const [username, setUsername] = useState('');
   const [isSuccessfulSubmit, setIsSuccessfulSubmit] = useState(false);
   const [{ response, error, isLoading }, doFetch] = useFetch(apiUrl);
-  const [token, setToken] = useLocalStorage('token');
+  const [, setToken] = useLocalStorage('token');
   const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
 
   const handleSubmit = () => {
     const user = isLogin ? { email, password } : { username, email, password };
-    doFetch({
+    doFetch({ // send request options to register or login user
       method: 'post',
       data: {
         user,
@@ -36,7 +36,7 @@ function Authentication(props) {
       return;
     }
 
-    setToken(response.user.token);
+    setToken(response.user.token); // when we get response after registration we set user info
     setIsSuccessfulSubmit(true);
     setCurrentUser((state) => ({
       ...state,

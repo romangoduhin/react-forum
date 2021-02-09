@@ -1,76 +1,95 @@
 @import "../../assets/styles/variables";
 
 .wrapper {
+  width: 100%;
+  height: 100vh;
+
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 92vh;
 
-  background-color: $gray;
+  background-image: url($backgroundImageUrl);
+  background-size: cover;
 
   .authBlock {
-    padding: 10px;
-
-    width: 45%;
+    width: 25%;
     height: auto;
 
-    border: $orange 2px solid;
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 10px;
 
     background-color: $white;
+    box-shadow: 0 0 105px $lightGreen;
 
-    .title {
-      text-align: center;
-
+    .titleWrapper {
       width: 100%;
-      height: 10%;
+      height: auto;
+      min-height: 150px;
 
-      text-transform: uppercase;
-      font-size: 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 10px;
+
+      .logo {
+        width: 25%;
+        height: 80%;
+      }
     }
 
     .inputWrapper {
+      padding: 0 20px 20px 20px;
+
       width: 100%;
-      height: 40%;
 
       .label {
-        font-size: 25px;
+        font-size: 20px;
+        color: $red;
       }
 
       input {
+        margin-bottom: 10px;
+
         width: 100%;
         height: 70px;
 
         font-size: 25px;
+        color: $blue;
+
+        border: none;
+        border-bottom: 1px $lightGrey solid;
+        outline: none;
+
+        background-color: $white;
       }
     }
 
-    .buttonWrapper {
-      padding: 5px;
-
+    .submitButton {
       width: 100%;
-      height: 40%;
+      height: 70px;
 
-      button {
-        background-color: $red;
-        &:hover {
-          color: $white;
+      font-size: 20px;
+      color: $white;
 
-          background-color: $brown;
+      border: none;
+      border-radius: 0 0 10px 10px;
 
-          transition: all 0.4s;
-        }
-      }
+      background-color: $blue;
 
-      p {
-        font-size: 25px;
-
-        a {
-          &:hover {
-            color: $orange;
-          }
-        }
-      }
+      cursor: pointer;
     }
+  }
+
+  .link {
+    margin-top: 10px;
+
+    color: $blue;
+
+    border-bottom: 1px $blue solid;
   }
 }

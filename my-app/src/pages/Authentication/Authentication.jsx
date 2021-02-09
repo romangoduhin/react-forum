@@ -6,6 +6,7 @@ import useFetch from '../../hooks/useFetch';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ErrorMessages from './components/ErrorMessages';
+import reactumLogo from '../../assets/images/reactumLogo.png';
 
 function Authentication(props) {
   const isLogin = props.match.path === '/login';
@@ -52,10 +53,12 @@ function Authentication(props) {
   return (
     <div className={style.wrapper}>
       <div className={style.authBlock}>
-        <h1>{pageTitle}</h1>
-        <Link to={descriptionLink}>{descriptionText}</Link>
-        <form className={style.inputWrapper}>
+        <div className={style.titleWrapper}>
+          <img src={reactumLogo} alt="reactumLogo" className={style.logo} />
           {error && <ErrorMessages error={error.errors} />}
+        </div>
+
+        <form className={style.inputWrapper}>
           {!isLogin && (
             <label htmlFor="username" className={style.label}>
               Username
@@ -64,6 +67,7 @@ function Authentication(props) {
                 type="text"
                 id="username"
                 placeholder="username"
+                autoComplete="off"
                 value={username}
                 onChange={(e) => {
                   setUsername(e.target.value);
@@ -79,6 +83,7 @@ function Authentication(props) {
               type="text"
               id="email"
               placeholder="email"
+              autoComplete="off"
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -92,18 +97,27 @@ function Authentication(props) {
             <input
               type="password"
               id="password"
-              autoComplete="off"
               placeholder="password"
+              autoComplete="off"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
             />
           </label>
-
-          <button type="button" onClick={handleSubmit} disabled={isLoading}>{pageTitle}</button>
         </form>
+
+        <button
+          className={style.submitButton}
+          type="button"
+          onClick={handleSubmit}
+          disabled={isLoading}
+        >
+          {pageTitle}
+        </button>
       </div>
+
+      <Link className={style.link} to={descriptionLink}>{descriptionText}</Link>
     </div>
   );
 }

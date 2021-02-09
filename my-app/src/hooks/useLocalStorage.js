@@ -7,7 +7,7 @@ export default (key, initialValue = '') => { // this custom hook to work with lo
 
   useEffect(() => { // set localStorage item
     localStorage.setItem(key, value);
-  }, [value]);
+  }, [value, key]);
 
   return [value, setValue];
 };

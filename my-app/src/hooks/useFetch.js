@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import useLocalStorage from './useLocalStorage';
 
 export default (url) => { // this custom hook do fetching
@@ -10,10 +10,10 @@ export default (url) => { // this custom hook do fetching
   const [options, setOptions] = useState({});
   const [token] = useLocalStorage('token');
 
-  const doFetch = (options = {}) => {
+  const doFetch = useCallback((options = {}) => { // return a memoized version of the function
     setOptions(options);
     setIsLoading(true);
-  };
+  }, []);
 
   useEffect(() => {
     if (!isLoading) {
@@ -34,7 +34,7 @@ export default (url) => { // this custom hook do fetching
       setIsLoading(false);
       setError(error.response.data);
     });
-  }, [isLoading]);
+  }, [isLoading, options, token, url]);
 
   return [{ response, error, isLoading }, doFetch];
 };

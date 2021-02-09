@@ -20,7 +20,7 @@ function CurrentUserChecker({ children }) { // this component checks if the user
     setCurrentUser((state) => ({
       ...state, isLoading: true,
     }));
-  }, []);
+  }, [token, doFetch, setCurrentUser]);
 
   useEffect(() => {
     if (!response) {
@@ -33,7 +33,7 @@ function CurrentUserChecker({ children }) { // this component checks if the user
       isLogged: true,
       currentUser: response.user,
     }));
-  }, [response]);
+  }, [response, setCurrentUser]);
 
   return children;
 }

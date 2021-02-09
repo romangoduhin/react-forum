@@ -44,7 +44,7 @@ function Authentication(props) {
       isLogged: true,
       currentUser: response.user,
     }));
-  }, [response, isSuccessfulSubmit, currentUser]);
+  }, [response, setToken, setCurrentUser]);
 
   if (isSuccessfulSubmit) {
     return <Redirect to="/" />;
@@ -92,6 +92,7 @@ function Authentication(props) {
             <input
               type="password"
               id="password"
+              autoComplete="off"
               placeholder="password"
               value={password}
               onChange={(e) => {

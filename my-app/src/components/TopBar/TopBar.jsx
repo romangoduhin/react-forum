@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import style from './TopBar.module.scss';
+import reactumLogo from '../../assets/images/reactumLogo.png';
 
 function TopBar() {
   return (
     <nav className={style.navBar}>
       <div className={style.container}>
-        <Link className={style.title} to="/">reactum +</Link>
+        <Link className={style.title} to="/">
+          <img src={reactumLogo} alt="reactumLogo" />
+        </Link>
         <ul className={style.navList}>
           <li className={style.navItem}>
             <NavLink className={style.navLink} activeClassName={style.navLinkActive} exact to="/">Home</NavLink>

@@ -1,8 +1,9 @@
 import React from 'react';
+import style from './GlobalFeed.module.scss';
 
 function GlobalFeed() {
   return (
-    <div>Global Feed</div>
+    <div className={style.wrapper}>Global Feed</div>
   );
 }
 

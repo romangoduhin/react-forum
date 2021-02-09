@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import style from './index.module.scss';
+import style from './TopBar.module.scss';
 
 function TopBar() {
   return (

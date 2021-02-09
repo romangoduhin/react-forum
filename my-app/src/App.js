@@ -5,20 +5,25 @@ import {
 } from 'react-router-dom';
 import GlobalFeed from './pages/GlobalFeed';
 import Article from './pages/Article';
-import TopBar from './components/TopBar';
 import Authentication from './pages/Authentication';
+import TopBar from './components/TopBar';
+import { CurrentUserProvider } from './contexts/CurrentUserContext';
+import CurrentUserChecker from './components/CurrentUserChecker';
 
 function App() {
   return (
-    <BrowserRouter>
-      <TopBar />
+    <CurrentUserProvider>
+      <CurrentUserChecker>
+        <BrowserRouter>
+          <TopBar />
 
-      <Route exact path="/" render={() => <GlobalFeed />} />
-      <Route path="/article/:articlePath" render={() => <Article />} />
-      <Route path="/login" render={() => <Authentication />} />
-      <Route path="/signup" render={() => <Authentication />} />
-
-    </BrowserRouter>
+          <Route exact path="/" component={GlobalFeed} />
+          <Route path="/article/:articlePath" component={Article} />
+          <Route path="/login" component={Authentication} />
+          <Route path="/signup" component={Authentication} />
+        </BrowserRouter>
+      </CurrentUserChecker>
+    </CurrentUserProvider>
   );
 }
 

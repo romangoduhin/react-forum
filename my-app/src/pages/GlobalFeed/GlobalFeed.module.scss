@@ -1,3 +1,20 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
 .wrapper {
-  height: 1000px;
+  width: 100%;
+  height: auto;
+
+  @include flexCenter;
+  flex-direction: row;
+
+  .articles {
+    flex-basis: 70%;
+  }
+
+  .tags {
+    height: 1000px;
+
+    flex-basis: 30%;
+  }
 }

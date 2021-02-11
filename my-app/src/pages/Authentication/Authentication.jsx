@@ -54,7 +54,9 @@ function Authentication(props) {
     <div className={style.wrapper}>
       <div className={style.authBlock}>
         <div className={style.titleWrapper}>
-          <img src={reactumLogo} alt="reactumLogo" className={style.logo} />
+          <Link className={style.title} to="/">
+            <img src={reactumLogo} alt="reactumLogo" />
+          </Link>
           {error && <ErrorMessages error={error.errors} />}
         </div>
 

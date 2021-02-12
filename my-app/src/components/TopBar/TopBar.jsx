@@ -42,8 +42,13 @@ function TopBar() {
               </li>
 
               <li className={style.navItem}>
-                <NavLink className={style.navLink} activeClassName={style.navLinkActive} to={`/profiles/${currentUserData.currentUser.username}`}>
-                  <img src={currentUserData.currentUser.image} alt="" />
+                <NavLink
+                  className={style.navLink}
+                  activeClassName={style.navLinkActive}
+                  to={`/profiles/${currentUserData.currentUser.username}`}
+                >
+                  {currentUserData.currentUser.image ? <img src={currentUserData.currentUser.image} alt="" />
+                    : <i className="ion-person" />}
                   {' '}
                   <span>{currentUserData.currentUser.username}</span>
                 </NavLink>

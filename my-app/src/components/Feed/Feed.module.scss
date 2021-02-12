@@ -9,9 +9,9 @@
     flex-direction: column;
     align-items: flex-end;
 
-
-
     .articleWrapper {
+      margin-top: 10px;
+
       padding: 20px 0 20px 0;
 
       width: 80%;
@@ -22,7 +22,9 @@
 
       background-color: $white;
 
-      border-bottom: 1px $gray solid;
+      box-shadow: 0 0 50px $lightGray;
+
+      border-radius: 5px;
 
       .author {
         padding: 10px;
@@ -50,6 +52,8 @@
 
           .userName {
             height: 50%;
+
+            color: $red;
           }
 
           .createdAt {

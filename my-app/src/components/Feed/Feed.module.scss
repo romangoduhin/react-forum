@@ -1,0 +1,84 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+.articlesWrapper {
+  width: 100%;
+
+  .articlesList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .articleWrapper {
+      margin-top: 10px;
+
+      padding: 20px 0 20px 0;
+
+      width: 80%;
+      height: 100%;
+
+      @include flexStart;
+      flex-direction: column;
+
+      background-color: $white;
+
+      box-shadow: 0 0 50px $lightGray;
+
+      border-radius: 5px;
+
+      .author {
+        padding: 10px;
+
+        width: 100%;
+        height: auto;
+
+        @include flexStart;
+        flex-direction: row;
+
+        .userImage {
+          width: 50px;
+          height: 50px;
+
+          border-radius: 100%;
+        }
+
+        .userInfo {
+          margin-left: 10px;
+
+          height: 50px;
+
+          @include flexStart;
+          flex-direction: column;
+
+          .userName {
+            height: 50%;
+
+            color: $red;
+          }
+
+          .createdAt {
+            height: 50%;
+          }
+        }
+      }
+
+      .description {
+        padding: 10px;
+
+        width: 100%;
+        height: auto;
+
+        @include flexStart;
+        flex-direction: column;
+
+        span {
+          margin-top: 10px;
+
+          color: $gray;
+
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

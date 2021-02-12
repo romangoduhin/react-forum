@@ -1,0 +1,36 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+
+.pagesItem {
+  width: 4%;
+  height: 40px;
+
+  @include flexCenter;
+
+  color: white;
+
+  list-style: none;
+
+  .pagesItemLink {
+    color: $lightGreen;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+.pagesItemActive {
+  width: 4%;
+  height: 40px;
+
+  @include flexCenter;
+
+  border-bottom: 1px $black solid;
+
+  list-style: none;
+
+  .pagesItemLink {
+    color: $black;
+  }
+}

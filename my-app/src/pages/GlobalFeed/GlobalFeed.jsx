@@ -5,6 +5,9 @@ import useFetch from '../../hooks/useFetch';
 import Feed from '../../components/Feed';
 import Pagination from '../../components/Pagination';
 import { getPageAndOffset, limit } from '../../utils';
+import PopularTags from '../../components/PopularTags';
+import Loading from '../../components/Loading';
+import ErrorMessage from '../../components/ErrorMessage';
 
 function GlobalFeed({ location, match }) {
   const { url } = match;
@@ -19,8 +22,8 @@ function GlobalFeed({ location, match }) {
   return (
     <div className={style.wrapper}>
       <div className={style.articles}>
-        {isLoading && <div>Loading</div>}
-        {error && <div>{`Error: ${error}`}</div>}
+        {isLoading && <Loading /> }
+        {error && <ErrorMessage error={error} />}
         {!isLoading && response && (
         <>
           <Feed articles={response.articles} />
@@ -33,10 +36,7 @@ function GlobalFeed({ location, match }) {
         </>
         )}
       </div>
-
-      <div className={style.tags}>
-        Tags
-      </div>
+      <PopularTags />
     </div>
   );
 }

@@ -26,6 +26,8 @@
 
   @include flexCenter;
 
+  border-bottom: 1px $black solid;
+
   list-style: none;
 
   .pagesItemLink {

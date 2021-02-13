@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { stringify } from 'query-string';
-import style from './GlobalFeed.module.scss';
+import style from './TagsFeed.module.scss';
 import useFetch from '../../hooks/useFetch';
 import Feed from '../../components/Feed';
 import Pagination from '../../components/Pagination';
@@ -10,20 +10,21 @@ import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
 import FeedToggler from '../../components/FeedToggler';
 
-function GlobalFeed({ location, match }) {
+function TagsFeed({ location, match }) {
+  const { tag } = match.params;
   const { url } = match;
   const { currentPage, offset } = getPageAndOffset(location.search);
-  const stringifiedParams = stringify({ limit, offset });
+  const stringifiedParams = stringify({ limit, offset, tag });
   const apiUrl = `/articles?${stringifiedParams}`;
   const [{ response, error, isLoading }, doFetch] = useFetch(apiUrl);
   useEffect(() => {
     doFetch();
-  }, [doFetch, currentPage]);
+  }, [doFetch, currentPage, tag]);
 
   return (
     <div className={style.wrapper}>
       <div className={style.articles}>
-        <FeedToggler />
+        <FeedToggler tagName={tag} />
         {isLoading && <Loading /> }
         {error && <ErrorMessage error={error} />}
         {!isLoading && response && (
@@ -43,4 +44,4 @@ function GlobalFeed({ location, match }) {
   );
 }
 
-export default GlobalFeed;
+export default TagsFeed;

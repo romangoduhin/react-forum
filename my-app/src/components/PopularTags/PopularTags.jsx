@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import style from './PopularTags.module.scss';
 import useFetch from '../../hooks/useFetch';
 import Loading from '../Loading';
@@ -14,7 +14,11 @@ function PopularTags() {
   }, [doFetch]);
 
   if (isLoading || !response) {
-    return <Loading />;
+    return (
+      <div className={style.tagsWrapper}>
+        <Loading />
+      </div>
+    );
   }
 
   if (error) {
@@ -25,7 +29,7 @@ function PopularTags() {
     <div className={style.tagsWrapper}>
       <h2 className={style.tagsTitle}>Popular tags</h2>
       <div className={style.tags}>
-        {response.tags.sort().map((tag) => <Link to={`/tags/${tag}`} key={tag} className={style.tag}>{tag}</Link>)}
+        {response.tags.sort().map((tag) => <NavLink to={`/tags/${tag}`} key={tag} className={style.tag} activeClassName={style.activeTag}>{tag}</NavLink>)}
       </div>
     </div>
   );

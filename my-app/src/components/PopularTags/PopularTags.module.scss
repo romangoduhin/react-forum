@@ -46,6 +46,12 @@
         border-bottom: 1px $white solid;
       }
     }
+
+    .activeTag {
+      color: $black;
+
+      border-bottom: 1px $white solid;
+    }
   }
 }
 

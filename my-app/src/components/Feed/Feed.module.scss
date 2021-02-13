@@ -71,12 +71,43 @@
         @include flexStart;
         flex-direction: column;
 
+        .tagList{
+          margin-top: 10px;
+
+          width: 100%;
+          height: auto;
+
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+
+          .tagListItem{
+            margin-right: 10px;
+
+            height: auto;
+
+            color: $black;
+
+            border-radius: 5px;
+            border-bottom: 1px black solid;
+
+            background-color: $red;
+
+            list-style: none;
+
+            a {
+              &:hover {
+                color: $white;
+
+                border-bottom: 1px $white solid;
+              }
+            }
+          }
+        }
         span {
           margin-top: 10px;
 
           color: $gray;
-
-          cursor: pointer;
         }
       }
     }

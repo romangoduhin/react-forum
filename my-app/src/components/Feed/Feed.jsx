@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import style from './Feed.module.scss';
 
 function Feed({ articles }) {
@@ -17,7 +18,15 @@ function Feed({ articles }) {
             <div className={style.description}>
               <h3 className={style.title}>{article.title}</h3>
               <p className={style.body}>{article.body}</p>
-              <span>tags</span>
+              {(article.tagList.length !== 0) && (
+                <ul className={style.tagList}>
+                  {article.tagList.map((tag) => (
+                    <li className={style.tagListItem}>
+                      <Link to={`/tags/${tag}`}>{tag}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
               <span>Read more...</span>
             </div>
           </li>

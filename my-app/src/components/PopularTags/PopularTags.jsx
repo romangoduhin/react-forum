@@ -14,7 +14,11 @@ function PopularTags() {
   }, [doFetch]);
 
   if (isLoading || !response) {
-    return <Loading />;
+    return (
+      <div className={style.tagsWrapper}>
+        <Loading />
+      </div>
+    );
   }
 
   if (error) {

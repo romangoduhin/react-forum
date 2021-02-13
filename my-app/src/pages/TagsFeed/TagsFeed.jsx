@@ -24,11 +24,11 @@ function TagsFeed({ location, match }) {
   return (
     <div className={style.wrapper}>
       <div className={style.articles}>
+        <FeedToggler tagName={tag} />
         {isLoading && <Loading /> }
         {error && <ErrorMessage error={error} />}
         {!isLoading && response && (
         <>
-          <FeedToggler tagName={tag} />
           <Feed articles={response.articles} />
           <Pagination
             totalCount={response.articlesCount}

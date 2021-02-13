@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { stringify } from 'query-string';
-import style from './GlobalFeed.module.scss';
+import style from './YourFeed.module.scss';
 import useFetch from '../../hooks/useFetch';
 import Feed from '../../components/Feed';
 import Pagination from '../../components/Pagination';
@@ -10,11 +10,11 @@ import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
 import FeedToggler from '../../components/FeedToggler';
 
-function GlobalFeed({ location, match }) {
+function YourFeed({ location, match }) {
   const { url } = match;
   const { currentPage, offset } = getPageAndOffset(location.search);
   const stringifiedParams = stringify({ limit, offset });
-  const apiUrl = `/articles?${stringifiedParams}`;
+  const apiUrl = `/articles/feed?${stringifiedParams}`;
   const [{ response, error, isLoading }, doFetch] = useFetch(apiUrl);
   useEffect(() => {
     doFetch();
@@ -43,4 +43,4 @@ function GlobalFeed({ location, match }) {
   );
 }
 
-export default GlobalFeed;
+export default YourFeed;

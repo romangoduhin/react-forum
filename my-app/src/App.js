@@ -10,6 +10,7 @@ import TopBar from './components/TopBar';
 import { CurrentUserProvider } from './contexts/CurrentUserContext';
 import CurrentUserChecker from './components/CurrentUserChecker';
 import TagsFeed from './pages/TagsFeed';
+import YourFeed from './pages/YourFeed';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <TopBar />
 
           <Route exact path="/" component={GlobalFeed} />
+          <Route path="/feed" component={YourFeed} />
           <Route path="/tags/:tag" component={TagsFeed} />
           <Route path="/article/:articlePath" component={Article} />
           <Route path="/login" component={Authentication} />

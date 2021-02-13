@@ -13,12 +13,12 @@ function FeedToggler({ tagName }) {
         </li>
         {currentUser && (
         <li className={style.togglerItem}>
-          <NavLink to="/feed" className={style.togglerLink}>Your Feed</NavLink>
+          <NavLink to="/feed" className={style.togglerLink} activeClassName={style.activeTogglerLink}>Your Feed</NavLink>
         </li>
         )}
         {tagName && (
         <li className={style.togglerItem}>
-          <NavLink to={`/tags/${tagName}`} className={style.togglerLink}>
+          <NavLink to={`/tags/${tagName}`} className={style.togglerLink} activeClassName={style.activeTogglerLink}>
             #
             {tagName}
           </NavLink>

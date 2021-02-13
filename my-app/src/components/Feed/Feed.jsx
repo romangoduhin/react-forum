@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import style from './Feed.module.scss';
 
 function Feed({ articles }) {
@@ -22,7 +22,7 @@ function Feed({ articles }) {
                 <ul className={style.tagList}>
                   {article.tagList.map((tag) => (
                     <li className={style.tagListItem}>
-                      <Link to={`/tags/${tag}`}>{tag}</Link>
+                      <NavLink className={style.tag} activeClassName={style.activeTag} to={`/tags/${tag}`}>{tag}</NavLink>
                     </li>
                   ))}
                 </ul>

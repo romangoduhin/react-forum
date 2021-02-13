@@ -8,6 +8,7 @@ import { getPageAndOffset, limit } from '../../utils';
 import PopularTags from '../../components/PopularTags';
 import Loading from '../../components/Loading';
 import ErrorMessage from '../../components/ErrorMessage';
+import FeedToggler from '../../components/FeedToggler';
 
 function GlobalFeed({ location, match }) {
   const { url } = match;
@@ -26,6 +27,7 @@ function GlobalFeed({ location, match }) {
         {error && <ErrorMessage error={error} />}
         {!isLoading && response && (
         <>
+          <FeedToggler tagName="www" />
           <Feed articles={response.articles} />
           <Pagination
             totalCount={response.articlesCount}

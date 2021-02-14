@@ -1,0 +1,48 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+.articleWrapper {
+  margin-top: 10px;
+
+  width: 100%;
+  height: auto;
+
+  @include flexCenter;
+  flex-direction: column;
+
+  .articleBanner {
+    padding: 20px;
+
+    width: 80%;
+    height: auto;
+    min-height: 200px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    border-radius: 5px;
+
+    box-shadow: 0 0 50px $lightGray;
+
+    background-color: $white;
+  }
+
+  .articleBody {
+    margin-top: 10px;
+    padding: 20px;
+
+    width: 80%;
+    height: auto;
+    min-height: 400px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 5px;
+
+    box-shadow: 0 0 50px $lightGray;
+
+    background-color: $white;
+  }
+}

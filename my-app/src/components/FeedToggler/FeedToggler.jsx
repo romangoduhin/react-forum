@@ -11,7 +11,7 @@ function FeedToggler({ tagName }) {
         <li className={style.togglerItem}>
           <NavLink to="/" className={style.togglerLink} activeClassName={style.activeTogglerLink} exact>Global Feed</NavLink>
         </li>
-        {currentUser && (
+        {currentUser.currentUser && (
         <li className={style.togglerItem}>
           <NavLink to="/feed" className={style.togglerLink} activeClassName={style.activeTogglerLink}>Your Feed</NavLink>
         </li>

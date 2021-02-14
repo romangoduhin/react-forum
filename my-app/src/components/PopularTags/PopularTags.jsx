@@ -16,6 +16,9 @@ function PopularTags() {
   if (isLoading || !response) {
     return (
       <div className={style.tagsWrapper}>
+        <div className={style.tagsTitle}>
+          <p className={style.title}> Popular tags: </p>
+        </div>
         <Loading />
       </div>
     );
@@ -27,7 +30,9 @@ function PopularTags() {
 
   return (
     <div className={style.tagsWrapper}>
-      <p className={style.tagsTitle}>Popular tags:</p>
+      <div className={style.tagsTitle}>
+        <p className={style.title}> Popular tags: </p>
+      </div>
       <div className={style.tags}>
         {response.tags.sort().map((tag) => <NavLink to={`/tags/${tag}`} key={tag} className={style.tag} activeClassName={style.activeTag}>{tag}</NavLink>)}
       </div>

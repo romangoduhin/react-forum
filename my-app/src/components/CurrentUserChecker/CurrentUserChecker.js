@@ -6,34 +6,24 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 function CurrentUserChecker({ children }) { // this component checks if the user is logged in
   const [token] = useLocalStorage('token');
   const [{ response }, doFetch] = useFetch('/user');
-  const [, setCurrentUser] = useContext(CurrentUserContext);
+  const [, dispatch] = useContext(CurrentUserContext);
 
   useEffect(() => {
     if (!token) { // if user is not logged in
-      setCurrentUser((state) => ({
-        ...state, isLogged: false,
-      }));
+      dispatch({ type: 'SET_UNAUTHORIZED' });
       return;
     }
 
     doFetch(); // if the user is logged in , send request to get current user info
-    setCurrentUser((state) => ({
-      ...state, isLoading: true,
-    }));
-  }, [token, doFetch, setCurrentUser]);
+    dispatch({ type: 'LOADING' });
+  }, [token, doFetch, dispatch]);
 
   useEffect(() => {
     if (!response) {
       return;
     }
-
-    setCurrentUser((state) => ({ // if the user is logged in, set current user info from response
-      ...state,
-      isLoading: false,
-      isLogged: true,
-      currentUser: response.user,
-    }));
-  }, [response, setCurrentUser]);
+    dispatch({ type: 'SET_AUTHORIZED', payload: response.user }); // if the user is logged in, set current user info from response
+  }, [response, dispatch]);
 
   return children;
 }

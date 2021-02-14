@@ -1,6 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import style from './Feed.module.scss';
+import TagsList from '../TagsList';
+import Author from '../Author';
 
 function Feed({ articles }) {
   return (
@@ -8,26 +10,16 @@ function Feed({ articles }) {
       <ul className={style.articlesList}>
         {articles.map((article) => (
           <li className={style.articleWrapper} key={article.slug}>
-            <div className={style.author}>
-              <img className={style.userImage} src={article.author.image} alt="" />
-              <div className={style.userInfo}>
-                <span className={style.userName}>{article.author.username}</span>
-                <span className={style.createdAt}>{article.createdAt}</span>
-              </div>
-            </div>
+            <Author author={article.author} createdAt={article.createdAt} />
             <div className={style.description}>
               <h3 className={style.title}>{article.title}</h3>
               <p className={style.body}>{article.body}</p>
-              {(article.tagList.length !== 0) && (
-                <ul className={style.tagList}>
-                  {article.tagList.map((tag) => (
-                    <li className={style.tagListItem}>
-                      <NavLink className={style.tag} activeClassName={style.activeTag} to={`/tags/${tag}`}>{tag}</NavLink>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <span>Read more...</span>
+              <TagsList tagsList={article.tagList} />
+              <span>
+                <Link to={`article/${article.slug}`}>
+                  Read more...
+                </Link>
+              </span>
             </div>
           </li>
         ))}

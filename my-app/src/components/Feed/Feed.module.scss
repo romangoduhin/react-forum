@@ -26,42 +26,6 @@
 
       border-radius: 5px;
 
-      .author {
-        padding: 10px;
-
-        width: 100%;
-        height: auto;
-
-        @include flexStart;
-        flex-direction: row;
-
-        .userImage {
-          width: 50px;
-          height: 50px;
-
-          border-radius: 100%;
-        }
-
-        .userInfo {
-          margin-left: 10px;
-
-          height: 50px;
-
-          @include flexStart;
-          flex-direction: column;
-
-          .userName {
-            height: 50%;
-
-            color: $red;
-          }
-
-          .createdAt {
-            height: 50%;
-          }
-        }
-      }
-
       .description {
         padding: 10px;
 
@@ -70,47 +34,6 @@
 
         @include flexStart;
         flex-direction: column;
-
-        .tagList {
-          margin-top: 10px;
-
-          width: 100%;
-          height: auto;
-
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-
-          .tagListItem {
-            margin-right: 10px;
-            padding: 5px;
-
-            height: auto;
-
-            color: $black;
-
-            border-radius: 5px;
-            border-bottom: 1px black solid;
-
-            background-color: $red;
-
-            list-style: none;
-
-            .tag {
-              &:hover {
-                color: $white;
-
-                border-bottom: 1px $white solid;
-              }
-            }
-
-            .activeTag {
-              border-radius: 5px;
-
-              color: $white;
-            }
-          }
-        }
 
         span {
           margin-top: 10px;

@@ -16,7 +16,7 @@ function Feed({ articles }) {
               <p className={style.body}>{article.body}</p>
               <TagsList tagsList={article.tagList} />
               <span>
-                <Link to={`article/${article.slug}`}>
+                <Link to={`/article/${article.slug}`}>
                   Read more...
                 </Link>
               </span>

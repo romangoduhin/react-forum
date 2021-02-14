@@ -47,7 +47,7 @@ function TopBar() {
                   activeClassName={style.navLinkActive}
                   to={`/profiles/${currentUserData.currentUser.username}`}
                 >
-                  {currentUserData.currentUser.image ? <img src={currentUserData.currentUser.image} alt="" />
+                  {currentUserData.currentUser.image ? <img className={style.userImage} src={currentUserData.currentUser.image} alt="" />
                     : <i className="ion-person" />}
                   {' '}
                   <span>{currentUserData.currentUser.username}</span>

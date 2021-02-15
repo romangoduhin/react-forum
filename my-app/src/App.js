@@ -11,6 +11,7 @@ import { CurrentUserProvider } from './contexts/CurrentUserContext';
 import CurrentUserChecker from './components/CurrentUserChecker';
 import TagsFeed from './pages/TagsFeed';
 import YourFeed from './pages/YourFeed';
+import CreateArticle from './pages/CreateArticle';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <BrowserRouter>
           <TopBar />
 
+          <Route path="/articles/new" component={CreateArticle} />
           <Route exact path="/" component={GlobalFeed} />
           <Route path="/feed" component={YourFeed} />
           <Route path="/tags/:tag" component={TagsFeed} />

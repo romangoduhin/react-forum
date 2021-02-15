@@ -47,7 +47,18 @@
         list-style: none;
 
         .navLink {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
           transition:  0.5s;
+
+          .userImage{
+            width: 15px;
+            height: 15px;
+
+            border-radius: 100%;
+          }
         }
         .navLinkActive {
           transition:  0.5s;

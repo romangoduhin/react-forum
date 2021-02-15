@@ -5,7 +5,7 @@ import style from './Authentication.module.scss';
 import useFetch from '../../hooks/useFetch';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import ErrorMessages from './components/ErrorMessages';
+import ErrorMessages from '../../components/ErrorMessages';
 import reactumLogo from '../../assets/images/reactumLogo.png';
 
 function Authentication(props) {

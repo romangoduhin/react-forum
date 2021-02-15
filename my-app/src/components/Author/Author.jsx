@@ -7,7 +7,7 @@ function Author({ author, createdAt }) {
       <img className={style.userImage} src={author.image} alt="" />
       <div className={style.userInfo}>
         <span className={style.userName}>{author.username}</span>
-        <span className={style.createdAt}>{createdAt}</span>
+        <span className={style.createdAt}>{createdAt.slice(0, 10)}</span>
       </div>
     </div>
   );

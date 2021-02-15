@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import style from './Article.module.scss';
 import useFetch from '../../hooks/useFetch';
 import Loading from '../../components/Loading';
-import ErrorMessage from '../../components/ErrorMessage';
+import ErrorMessages from '../../components/ErrorMessages';
 import Author from '../../components/Author';
 import TagsList from '../../components/TagsList';
 
@@ -18,7 +18,7 @@ function Article({ match }) {
   return (
     <div className={style.articleWrapper}>
       {isLoading && <Loading /> }
-      {error && <ErrorMessage error={error} />}
+      {error && <ErrorMessages error={error} />}
       {!isLoading && response && (
         <>
           <div className={style.articleBanner}>

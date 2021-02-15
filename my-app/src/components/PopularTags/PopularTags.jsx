@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import style from './PopularTags.module.scss';
 import useFetch from '../../hooks/useFetch';
 import Loading from '../Loading';
-import ErrorMessage from '../ErrorMessage';
+import ErrorMessages from '../ErrorMessages';
 
 function PopularTags() {
   const apiUrl = '/tags';
@@ -25,7 +25,7 @@ function PopularTags() {
   }
 
   if (error) {
-    return <ErrorMessage error={error} />;
+    return <ErrorMessages error={error} />;
   }
 
   return (

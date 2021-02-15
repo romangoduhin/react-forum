@@ -7,7 +7,7 @@ import Pagination from '../../components/Pagination';
 import { getPageAndOffset, limit } from '../../utils';
 import PopularTags from '../../components/PopularTags';
 import Loading from '../../components/Loading';
-import ErrorMessage from '../../components/ErrorMessage';
+import ErrorMessages from '../../components/ErrorMessages';
 import FeedToggler from '../../components/FeedToggler';
 
 function YourFeed({ location, match }) {
@@ -25,7 +25,7 @@ function YourFeed({ location, match }) {
       <div className={style.articles}>
         <FeedToggler />
         {isLoading && <Loading /> }
-        {error && <ErrorMessage error={error} />}
+        {error && <ErrorMessages error={error} />}
         {!isLoading && response && (
         <>
           <Feed articles={response.articles} />

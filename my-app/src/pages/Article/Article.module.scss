@@ -18,14 +18,54 @@
     min-height: 200px;
 
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
 
     border-radius: 5px;
 
     box-shadow: 0 0 50px $lightGray;
 
     background-color: $white;
+
+    .mainInfoBlock{
+      width: 100%;
+
+      word-wrap: break-word;
+    }
+    .buttonsBlock{
+      display: flex;
+      justify-content: flex-end;
+
+      .editButton {
+        margin-right: 10px;
+
+        width: 10%;
+        height: 50px;
+
+        @include flexCenter;
+
+        font-size: 15px;
+
+        border-radius: 10px;
+
+        background-color: $lightGreen;
+      }
+
+      .deleteButton {
+        width: 10%;
+        height: 50px;
+
+        font-size: 15px;
+        color: $white;
+
+        border: none;
+        border-radius: 10px;
+
+        background-color: $red;
+
+        cursor: pointer;
+      }
+    }
   }
 
   .articleBody {
@@ -44,5 +84,7 @@
     box-shadow: 0 0 50px $lightGray;
 
     background-color: $white;
+
+    word-wrap: break-word;
   }
 }

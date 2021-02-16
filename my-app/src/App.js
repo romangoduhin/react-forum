@@ -12,6 +12,7 @@ import CurrentUserChecker from './components/CurrentUserChecker';
 import TagsFeed from './pages/TagsFeed';
 import YourFeed from './pages/YourFeed';
 import CreateArticle from './pages/CreateArticle';
+import EditArticle from './pages/EditArticle';
 
 function App() {
   return (
@@ -20,11 +21,12 @@ function App() {
         <BrowserRouter>
           <TopBar />
 
-          <Route path="/articles/new" component={CreateArticle} />
           <Route exact path="/" component={GlobalFeed} />
           <Route path="/feed" component={YourFeed} />
           <Route path="/tags/:tag" component={TagsFeed} />
-          <Route path="/article/:articlePath" component={Article} />
+          <Route path="/articles/new/" component={CreateArticle} />
+          <Route exact path="/article/:articlePath/edit" component={EditArticle} />
+          <Route exact path="/article/:articlePath" component={Article} />
           <Route path="/login" component={Authentication} />
           <Route path="/signup" component={Authentication} />
         </BrowserRouter>

@@ -8,6 +8,7 @@ import ErrorMessages from '../../components/ErrorMessages';
 import Author from '../../components/Author';
 import TagsList from '../../components/TagsList';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import LikeButton from '../../components/LikeButton';
 
 function Article({ match }) {
   const { articlePath } = match.params;

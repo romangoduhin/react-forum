@@ -42,6 +42,14 @@ function TopBar() {
               </li>
 
               <li className={style.navItem}>
+                <NavLink className={style.navLink} activeClassName={style.navLinkActive} to="/settings">
+                  <i className="ion-gear-a" />
+                  {' '}
+                  <span>Settings</span>
+                </NavLink>
+              </li>
+
+              <li className={style.navItem}>
                 <NavLink
                   className={style.navLink}
                   activeClassName={style.navLinkActive}

@@ -13,6 +13,7 @@ import TagsFeed from './pages/TagsFeed';
 import YourFeed from './pages/YourFeed';
 import CreateArticle from './pages/CreateArticle';
 import EditArticle from './pages/EditArticle';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <TopBar />
 
           <Route exact path="/" component={GlobalFeed} />
+          <Route path="/settings" component={Settings} />
           <Route path="/feed" component={YourFeed} />
           <Route path="/tags/:tag" component={TagsFeed} />
           <Route path="/articles/new/" component={CreateArticle} />

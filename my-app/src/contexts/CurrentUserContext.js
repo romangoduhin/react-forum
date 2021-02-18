@@ -19,6 +19,8 @@ function reducer(state, action) {
       };
     case 'SET_UNAUTHORIZED':
       return { ...state, isLogged: false };
+    case 'LOGOUT':
+      return { ...initialState, isLogged: false };
     default:
       return state;
   }

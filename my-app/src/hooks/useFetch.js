@@ -22,7 +22,7 @@ export default (url) => { // this custom hook do fetching
 
     const requestOptions = {
       ...options,
-      headers: { // if user is logged in - add token info, if user registers - add ''
+      headers: {
         authorization: token ? `Token ${token}` : '',
       },
     };

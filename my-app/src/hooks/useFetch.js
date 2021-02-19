@@ -16,8 +16,10 @@ export default (url) => { // this custom hook do fetching
   }, []);
 
   useEffect(() => {
+    let skipResponseAfterUnmount = false;
+
     if (!isLoading) {
-      return;
+      return null;
     }
 
     const requestOptions = {
@@ -28,12 +30,19 @@ export default (url) => { // this custom hook do fetching
     };
 
     axios(baseUrl + url, requestOptions).then((res) => {
-      setIsLoading(false);
-      setResponse(res.data);
+      if (!skipResponseAfterUnmount) {
+        setIsLoading(false);
+        setResponse(res.data);
+      }
     }).catch((error) => {
-      setIsLoading(false);
-      setError(error.response.data);
+      if (!skipResponseAfterUnmount) {
+        setIsLoading(false);
+        setError(error.response.data);
+      }
     });
+    return () => {
+      skipResponseAfterUnmount = true;
+    };
   }, [isLoading, options, token, url]);
 
   return [{ response, error, isLoading }, doFetch];

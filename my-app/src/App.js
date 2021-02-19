@@ -14,6 +14,7 @@ import YourFeed from './pages/YourFeed';
 import CreateArticle from './pages/CreateArticle';
 import EditArticle from './pages/EditArticle';
 import Settings from './pages/Settings';
+import UserProfile from './pages/UserProfile';
 
 function App() {
   return (
@@ -21,9 +22,10 @@ function App() {
       <CurrentUserChecker>
         <BrowserRouter>
           <TopBar />
-
           <Route exact path="/" component={GlobalFeed} />
           <Route path="/settings" component={Settings} />
+          <Route exact path="/profiles/:profilePath" component={UserProfile} />
+          <Route path="/profiles/:profilePath/favorites" component={UserProfile} />
           <Route path="/feed" component={YourFeed} />
           <Route path="/tags/:tag" component={TagsFeed} />
           <Route path="/articles/new/" component={CreateArticle} />

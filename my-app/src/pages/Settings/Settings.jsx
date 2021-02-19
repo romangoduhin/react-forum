@@ -18,8 +18,6 @@ function Settings() {
   const [password, setPassword] = useState('');
   const [isLogoutSuccess, setIsLogoutSuccess] = useState(false);
 
-  console.log('current', currentUser);
-
   const handleUpdate = () => {
     doFetch({
       method: 'put',

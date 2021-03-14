@@ -22,7 +22,7 @@ function App() {
       <CurrentUserChecker>
         <BrowserRouter>
           <TopBar />
-          <Route exact path="/" component={GlobalFeed} />
+          <Route exact path="/react-forum" component={GlobalFeed} />
           <Route path="/settings" component={Settings} />
           <Route exact path="/profiles/:profilePath" component={UserProfile} />
           <Route path="/profiles/:profilePath/favorites" component={UserProfile} />

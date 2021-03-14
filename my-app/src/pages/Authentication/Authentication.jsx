@@ -43,13 +43,13 @@ function Authentication(props) {
   }, [response, setToken, dispatch]);
 
   if (isSuccessfulSubmit) {
-    return <Redirect to="/" />;
+    return <Redirect to="/react-forum" />;
   }
   return (
     <div className={style.wrapper}>
       <div className={style.authBlock}>
         <div className={style.titleWrapper}>
-          <Link className={style.title} to="/">
+          <Link className={style.title} to="/react-forum">
             <img src={reactumLogo} alt="reactumLogo" />
           </Link>
           {error && <ErrorMessages error={error.errors} />}

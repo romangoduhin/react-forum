@@ -10,13 +10,13 @@ function TopBar() {
   return (
     <nav className={style.navBar}>
       <div className={style.container}>
-        <Link className={style.title} to="/">
+        <Link className={style.title} to="/react-forum">
           <img src={reactumLogo} alt="reactumLogo" />
         </Link>
 
         <ul className={style.navList}>
           <li className={style.navItem}>
-            <NavLink className={style.navLink} activeClassName={style.navLinkActive} exact to="/">Home</NavLink>
+            <NavLink className={style.navLink} activeClassName={style.navLinkActive} exact to="/react-forum">Home</NavLink>
           </li>
 
           {currentUserData.isLogged === false && (

@@ -9,7 +9,7 @@ function FeedToggler({ tagName }) {
     <div className={style.togglerWrapper}>
       <ul className={style.togglerList}>
         <li className={style.togglerItem}>
-          <NavLink to="/" className={style.togglerLink} activeClassName={style.activeTogglerLink} exact>Global Feed</NavLink>
+          <NavLink to="/react-forum" className={style.togglerLink} activeClassName={style.activeTogglerLink} exact>Global Feed</NavLink>
         </li>
         {currentUser.currentUser && (
         <li className={style.togglerItem}>

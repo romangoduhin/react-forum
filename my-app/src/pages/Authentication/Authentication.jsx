@@ -5,7 +5,7 @@ import style from './Authentication.module.scss';
 import useFetch from '../../hooks/useFetch';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import ErrorMessages from './components/ErrorMessages';
+import ErrorMessages from '../../components/ErrorMessages';
 import reactumLogo from '../../assets/images/reactumLogo.png';
 
 function Authentication(props) {
@@ -20,7 +20,7 @@ function Authentication(props) {
   const [isSuccessfulSubmit, setIsSuccessfulSubmit] = useState(false);
   const [{ response, error, isLoading }, doFetch] = useFetch(apiUrl);
   const [, setToken] = useLocalStorage('token');
-  const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
+  const [, dispatch] = useContext(CurrentUserContext);
 
   const handleSubmit = () => {
     const user = isLogin ? { email, password } : { username, email, password };
@@ -37,15 +37,10 @@ function Authentication(props) {
       return;
     }
 
-    setToken(response.user.token); // when we get response after registration we set user info
+    setToken(response.user.token); // when we get response we set token to localStorage
     setIsSuccessfulSubmit(true);
-    setCurrentUser((state) => ({
-      ...state,
-      isLoading: false,
-      isLogged: true,
-      currentUser: response.user,
-    }));
-  }, [response, setToken, setCurrentUser]);
+    dispatch({ type: 'SET_AUTHORIZED', payload: response.user }); // when we get response after registration we set user info
+  }, [response, setToken, dispatch]);
 
   if (isSuccessfulSubmit) {
     return <Redirect to="/" />;

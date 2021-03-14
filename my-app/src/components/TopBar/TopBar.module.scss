@@ -39,15 +39,26 @@
       justify-content: flex-end;
 
       .navItem {
-        margin-right: 10px;
+        margin-right: 20px;
 
-        font-size: 17px;
+        font-size: 15px;
         text-transform: uppercase;
 
         list-style: none;
 
         .navLink {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
           transition:  0.5s;
+
+          .userImage{
+            width: 15px;
+            height: 15px;
+
+            border-radius: 100%;
+          }
         }
         .navLinkActive {
           transition:  0.5s;

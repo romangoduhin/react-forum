@@ -18,8 +18,9 @@
 
     border-radius: 10px;
 
-    background-color: $white;
     box-shadow: 0 0 105px $lightGreen;
+
+    background-color: $white;
 
     .titleWrapper {
       width: 100%;
@@ -64,7 +65,7 @@
         color: $blue;
 
         border: none;
-        border-bottom: 1px $lightGrey solid;
+        border-bottom: 1px $lightGray solid;
         outline: none;
 
         background-color: $white;

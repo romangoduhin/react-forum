@@ -16,24 +16,33 @@ export default (url) => { // this custom hook do fetching
   }, []);
 
   useEffect(() => {
+    let skipResponseAfterUnmount = false;
+
     if (!isLoading) {
-      return;
+      return null;
     }
 
     const requestOptions = {
       ...options,
-      headers: { // if user is logged in - add token info, if user registers - add ''
+      headers: {
         authorization: token ? `Token ${token}` : '',
       },
     };
 
     axios(baseUrl + url, requestOptions).then((res) => {
-      setIsLoading(false);
-      setResponse(res.data);
+      if (!skipResponseAfterUnmount) {
+        setIsLoading(false);
+        setResponse(res.data);
+      }
     }).catch((error) => {
-      setIsLoading(false);
-      setError(error.response.data);
+      if (!skipResponseAfterUnmount) {
+        setIsLoading(false);
+        setError(error.response.data);
+      }
     });
+    return () => {
+      skipResponseAfterUnmount = true;
+    };
   }, [isLoading, options, token, url]);
 
   return [{ response, error, isLoading }, doFetch];

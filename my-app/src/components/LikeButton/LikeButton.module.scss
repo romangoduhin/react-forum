@@ -1,0 +1,21 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+.likeButton,.activeLikeButton{
+  font-size: 20px;
+  height: 30px;
+  width:50px ;
+  background-color: $red;
+
+  border: none;
+  border-radius: 5px;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+.activeLikeButton{
+  background-color: $pink;
+}
+

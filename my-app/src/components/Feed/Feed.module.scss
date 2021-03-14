@@ -1,0 +1,59 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+.articlesWrapper {
+  width: 80%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .articlesList {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .articleWrapper {
+      margin-top: 10px;
+
+      padding: 20px 0 20px 0;
+
+      width: 100%;
+      height: 100%;
+
+      @include flexStart;
+      flex-direction: column;
+
+      background-color: $white;
+
+      box-shadow: 0 0 50px $lightGray;
+
+      border-radius: 5px;
+
+      .header {
+        padding-right: 10px;
+
+        display: flex;
+        flex-direction: row;
+      }
+
+      .description {
+        padding: 10px;
+
+        width: 100%;
+        height: auto;
+
+        @include flexStart;
+        flex-direction: column;
+
+        span {
+          margin-top: 10px;
+
+          color: $gray;
+        }
+      }
+    }
+  }
+}

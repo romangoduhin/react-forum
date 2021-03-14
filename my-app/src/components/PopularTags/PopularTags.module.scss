@@ -1,0 +1,73 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+.tagsWrapper {
+  margin-left: 10px;
+
+  display: flex;
+  flex-basis: 30%;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .tagsTitle {
+    height: 65px;
+    width: 50%;
+
+    @include flexCenter;
+
+    font-size: 20px;
+
+    color: $black;
+
+    border-radius: 5px;
+
+    box-shadow: 0 0 10px $lightGray;
+
+    background-color: $pink;
+
+    .title {
+      border-bottom: 1px $black solid;
+    }
+  }
+
+  .tags {
+    margin-top: 10px;
+
+    width: 50%;
+    height: auto;
+    min-height: 210px;
+
+    @include flexCenter;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    border-radius: 5px;
+
+    box-shadow: 0 0 50px $lightGray;
+
+    background-color: $red;
+
+    .tag {
+      margin-right: 5px;
+
+      height: auto;
+
+      color: $white;
+
+      border-bottom: 1px $black solid;
+
+      &:hover {
+        color: black;
+
+        border-bottom: 1px $white solid;
+      }
+    }
+
+    .activeTag {
+      color: $black;
+
+      border-bottom: 1px $white solid;
+    }
+  }
+}
+

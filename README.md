@@ -13,8 +13,7 @@ password: reactumreactum
 ![](https://i.ibb.co/zRy7VVp/profilepage.png "profile page")
 ![](https://i.ibb.co/6XTmFyJ/settingspage.png "settings page")
 ![](https://i.ibb.co/MN1HGws/createarticlepage.png "create article page")
-![](https://i.ibb.co/16DmmBg/authenticationpage.png "authentication")
-
+<img width="1000" alt="homepage1" src="https://i.ibb.co/16DmmBg/authenticationpage.png">
 
 # What i used for it?
 

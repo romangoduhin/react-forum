@@ -2,9 +2,9 @@
 # Check it https://romangoduhin.github.io/react-forum/
 ## This is a Conduit clone https://react-redux.realworld.io/#/?_k=8kh19y.
 
-Data for authorization:
-email: reactum@gmail.com
-password: reactumreactum
+## Data for authorization:
+### email: reactum@gmail.com
+### password: reactumreactum
 
 # Screenshots:
 
